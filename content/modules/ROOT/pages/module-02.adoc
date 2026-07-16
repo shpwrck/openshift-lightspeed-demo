@@ -52,7 +52,7 @@ Take a look at those to get an understanding of what they are discussing. Notice
 
 Now that you know the contents of the internal ACME Corp policies and that OpenShift Lightspeed is pointing to the additional RAG database, you should be able to get answers based on that custom knowledge and content.
 
-If you closed the OpenShift Lightspeed window, re-open it. Make sure to click the cross icon *x* at the top right of the OpenShift Lightspeed interface to clear the chat and then ask the following question:
+If you closed the OpenShift Lightspeed window, re-open it. Make sure to click the *Clear chat* button — the trash can icon at the top of the chat window, which appears once a conversation is underway — and then ask the following question:
 
 [source,sh,role="execute",subs=attributes+]
 ----

@@ -9,7 +9,7 @@ This lab environment comes with OpenShift Virtualization already deployed and co
 
 If you're new to OpenShift Virtualization, there's a lot to learn. OpenShift Lightspeed can help you understand the key concepts and resources you'll be working with.
 
-For example, two important concepts when it comes to creating your first virtual machine in OpenShift Virtualization are InstanceTypes and VM Templates. Click the *Clear Chat (x)* button and then ask OpenShift Lightspeed to explain the difference between both resources:
+For example, two important concepts when it comes to creating your first virtual machine in OpenShift Virtualization are InstanceTypes and VM Templates. Click the *Clear chat* (trash can) button and then ask OpenShift Lightspeed to explain the difference between both resources:
 
 [source,role="execute",subs=attributes+]
 ----
@@ -61,7 +61,7 @@ OpenShift Lightspeed will use cluster interaction tools to query the VirtualMach
 
 Now let's dig deeper into what's wrong with this VM. In the OpenShift console, navigate to *Virtualization* in the left menu, then click on *VirtualMachines*. Make sure the project selected is *All Projects*. Find the RHEL 9 VM that's failing and click on the VM name to open its details page.
 
-Now, return to the OpenShift Lightspeed chat interface. Then click the *clip* button to attach information. Go ahead and attach the *Full YAML* for this VM. 
+Now, return to the OpenShift Lightspeed chat interface. Then click the *+* button to attach information. Go ahead and attach the *Full YAML file* for this VM. 
 
 image::broken-vm.png[Broken virtual machine]
 
