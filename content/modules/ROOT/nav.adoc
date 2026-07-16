@@ -1,0 +1,28 @@
+* xref:module-01.adoc[1. OpenShift Lightspeed Basics]
+** xref:module-01.adoc#starter-question[Starter Question]
+** xref:module-01.adoc#follow-up-question[Follow-up Questions]
+** xref:module-01.adoc#yaml-generation[YAML Generation]
+
+* xref:module-02.adoc[2. Bring Your Own Knowledge]
+** xref:module-02.adoc#examine-the-bring-your-own-knowledge-configuration[Examine the Configuration]
+** xref:module-02.adoc#check-the-internal-documentation[Internal Documentation]
+** xref:module-02.adoc#byok-enters-the-chat[BYOK Enters the Chat]
+
+* xref:module-03.adoc[3. Cluster Interaction]
+** xref:module-03.adoc#check-the-cluster-interaction-configuration[Check the OLSConfig]
+** xref:module-03.adoc#gathering-information-from-the-cluster[Gathering Information]
+
+* xref:module-04.adoc[4. Troubleshooting issues]
+** xref:module-04.adoc#attaching-resources-to-the-query[Attaching Resources]
+
+* xref:module-05.adoc[5. Custom MCP servers]
+** xref:module-05.adoc#deploy-the-insights-result-mcp-server[Deploy the MCP server]
+** xref:module-05.adoc#configure-openshift-lightspeed[Configure Lightspeed]
+** xref:module-05.adoc#use-your-custom-mcp-server[Use your MCP server]
+
+* xref:module-06.adoc[6. Lightspeed for VMs]
+** xref:module-06.adoc#new-virtualization-users[New Virtualization Users]
+** xref:module-06.adoc#users-coming-from-different-platforms[New terminology learning]
+** xref:module-06.adoc#troubleshooting-virtual-machines[Troubleshooting VMs]
+
+* xref:module-07.adoc[7. Key Takeaways]

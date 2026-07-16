@@ -1,0 +1,42 @@
+= Troubleshooting issues in the cluster
+
+Time to put OpenShift Lightspeed to the real test. The key to effective troubleshooting with OpenShift Lightspeed is using the resource attachment feature. By clicking the *clip* icon in the chat interface, you can attach YAML definitions and other components to your question, giving the AI assistant the precise context it needs to diagnose the problem.
+
+[#attaching-resources-to-the-query]
+== Attaching Resources to the Query
+
+In your environment there is a pod that is failing to schedule for some reason. In the OpenShift console, click *Workloads* on the left, then *Pods*, and then make sure to select the project named `broken` from the dropdown at the top of the page:
+
+image::broken-project-select.png[Broken project selection]
+
+Now, in the pod list, click on the *broken-pod* which you can see is in the _Pending_ state.
+
+Navigate to the chat interface. Make sure to click the *Clear Chat (x)* button in the OpenShift Lightspeed interface. Then, click the *clip* button to attach information. In this case, as this pod is currently _Pending_, there are no logs we can attach, and we don't really care about the events, either. Go ahead and attach the *Filtered YAML*, which will include the status information for this pod.
+
+image::attach-button.png[Attachment options in OpenShift Lightspeed]
+
+Then, simply ask:
+
+[source,role="execute",subs=attributes+]
+----
+What's wrong with this pod?
+----
+
+You should get some detailed information about nodes and node selectors.
+
+Now go ahead and attach the *Full YAML*, and then ask:
+
+[source,role="execute",subs=attributes+]
+----
+Can you fix it?
+----
+
+Fortunately, this is a pretty obvious typo: `worker` is spelled wrong. And, GPT-4 is a very capable model, so it suggests that this typo might be the problem, and suggests some ways for you to fix it.
+
+Can you see how the simple act of attaching details to your request can dramatically improve troubleshooting outcomes?
+
+Note that you can attach multiple things to your request at the same time, like a service, a route, and a deployment. This can make more complicated troubleshooting scenarios easier.
+
+== Expanding Capabilities
+
+Throughout this lab, you've seen how OpenShift Lightspeed uses cluster interaction and attachments to assist with your OpenShift workloads. But what if you could extend OpenShift Lightspeed even further by connecting it to external tools? In the next module, you'll learn how to integrate custom MCP servers into OpenShift Lightspeed.

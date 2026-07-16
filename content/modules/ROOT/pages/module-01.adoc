@@ -1,0 +1,71 @@
+= OpenShift Lightspeed Basics
+
+OpenShift Lightspeed uses a natural language interface to allow users to ask questions. You have used many chat interfaces before, so OpenShift Lightspeed should feel very comfortable to use.
+
+OpenShift Lightspeed is designed only to answer OpenShift-related questions, and it will generally attempt to reject questions that are unrelated to OpenShift and Kubernetes. If you try hard enough, you can probably get it to do something it wasn't explicitly designed to do, but this is a shortcoming of all non-deterministic language-model-based systems. It is a bit of a game of whack-a-mole trying to keep up with all of the possible negative outcomes, and trying to prevent them is a topic of active PhD research right now. If you see something bad, be sure to report it using the feedback feature. We will always do our best to improve the quality and safety of the system.
+
+[#starter-question]
+== Starter Question
+
+Log into the OpenShift web console by clicking the link:
+
+{openshift_cluster_console_url}[Red Hat OpenShift Web Console,window=_blank]
+
+Username:
+[source,role="execute",subs=attributes+]
+----
+{openshift_cluster_admin_username}
+----
+
+Password:
+[source,role="execute",subs=attributes+]
+----
+{openshift_cluster_admin_password}
+----
+
+Once you have logged-in, you should see the OpenShift Lightspeed icon in the bottom-right corner of the OpenShift console:
+
+image::ols-icon.jpg[OpenShift Lightspeed icon, 50%]
+
+Click the icon, and it will open the chat interface:
+
+image::ols-interface.png[OpenShift Lightspeed chat interface]
+
+Why don't you start out by asking an easy question like:
+
+[source,role="execute",subs=attributes+]
+----
+What are OpenShift Routes?
+----
+
+OpenShift Lightspeed should provide a detailed answer about what OpenShift routes are and key features. And, if you scroll to the bottom of the response, you will see that OpenShift Lightspeed has also provided a link to the documentation that was used to generate its response:
+
+image::related-docs.png[Related documentation]
+
+[#follow-up-question]
+== Follow-up Question
+
+OpenShift Lightspeed maintains context from your previous questions within the same chat session, allowing you to ask follow-up questions naturally. This conversational approach makes it easy to dive deeper into topics or move from theory to practice. For example, now that you understand what OpenShift Routes are, you can ask a practical follow-up question like:
+
+[source,role="execute",subs=attributes+]
+----
+How do I expose a service using a Route?
+----
+
+OpenShift Lightspeed remembers your conversation thanks to the PostgreSQL database we saw in the architecture image, and provides a more detailed, practical answer based on your previous question. This makes the learning experience more fluid and efficient.
+
+[#yaml-generation]
+== YAML Generation
+
+Beyond providing explanations and guidance, OpenShift Lightspeed can also generate YAML manifests for you. This is particularly useful when you need to create or modify Kubernetes/OpenShift resources quickly. Building on your previous conversation about Routes, you can ask OpenShift Lightspeed to generate actual YAML configuration. Try asking:
+
+[source,role="execute",subs=attributes+]
+----
+Generate a Route YAML that exposes a service on port 8080 with TLS edge termination
+----
+
+OpenShift Lightspeed will provide you with a complete YAML manifest that you can copy and apply to your cluster. The generated YAML follows OpenShift best practices and includes the relevant fields based on your specific requirements. You can then customize this YAML further if needed.
+
+== Problem!
+
+We can keep asking questions about OpenShift resources all day and OpenShift Lightspeed will provide us with the standard documentation it knows about. But what happens when those procedures are different for your team or organization? For example, at ACME Corp, pod autoscalers are not allowed to be used by default, and there is a special process for enabling autoscaling. Continue to the next section of the lab to learn how you can add your own organizational knowledge, documentation, and policy information to OpenShift Lightspeed.

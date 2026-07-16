@@ -1,0 +1,73 @@
+= Bring Your Own Knowledge
+
+Most organizations that have been using OpenShift Container Platform for any length of time have developed their own policies, procedures, templates, and other organizationally-specific information about OpenShift.
+
+As you learned earlier, OpenShift Lightspeed only uses the OpenShift documentation to support answers by default. So, how can you get your important internal knowledge into the system? Well, there's a feature for that called Bring Your Own Knowledge (BYOK).
+
+NOTE: This is currently a Technology Preview feature of OpenShift Lightspeed.
+
+[#examine-the-bring-your-own-knowledge-configuration]
+== Examine the Bring Your Own Knowledge Configuration
+
+The OpenShift Lightspeed Operator has been pre-configured in this lab environment to point to a container image with ACME Corp-specific knowledge. Let's examine this configuration to understand how BYOK works.
+
+NOTE: The process of building and creating the BYOK container image is outside the scope of this lab. If you want to learn more about how to create your own BYOK images, please check the official https://docs.redhat.com/en/documentation/red_hat_openshift_lightspeed/1.0/html/configure/ols-configuring-openshift-lightspeed#about-the-byo-knowledge-tool_ols-configuring-openshift-lightspeed[Bring Your Own Knowledge documentation].
+
+In the OpenShift Console, click *Ecosystem* and then *Installed Operators* in the left hand menu. Locate the *OpenShift Lightspeed Operator*.
+
+Next, click the *OLSConfig* tab, and then click the single OLSConfig instance called `cluster` in the list. Finally, select the *YAML* tab.
+
+In the YAML editor, scroll down until you spot the `rag` stanza under `.spec.ols.rag`. It should look something like:
+
+[source,yaml,role="execute",subs=attributes+]
+----
+...
+spec:
+...
+  ols:
+...
+    rag:
+      - image: 'quay.io/dialvare/acme-byok:latest'
+        indexID: ''
+        indexPath: /rag/vector_db
+----
+
+NOTE: You can define multiple RAG databases if you want to add multiple sources. The _rag_ stanza just takes an array of image references.
+
+[#check-the-internal-documentation]
+== Check the Internal Documentation
+
+As you just saw, OpenShift Lightspeed is configured to use a container image from Quay (`quay.io/dialvare/acme-byok:latest`) that contains ACME Corp's internal procedures and policies. But where does this content come from? 
+
+This BYOK image was built from markdown docs. The documentation used is located in this https://github.com/dialvare/showroom-openshift-lightspeed[GitOps repository] under the `byok` folder and consists of just two documents:
+
+* The specific ACME process for horizontal pod autoscaling
+* The specific ACME process for adding GPU nodes
+
+Take a look at those to get an understanding of what they are discussing.
+
+[#byok-enters-the-chat]
+== BYOK Enters the Chat
+
+Now that you know the contents of the internal ACME Corp policies and that OpenShift Lightspeed is pointing to the additional RAG database, you should be able to get answers based on that custom knowledge and content.
+
+If you closed the OpenShift Lightspeed window, re-open it. Make sure to click the cross icon *x* at the top right of the OpenShift Lightspeed interface to clear the chat and then ask the following question:
+
+[source,sh,role="execute",subs=attributes+]
+----
+How can I use a pod autoscaler at ACME Corp?
+----
+
+You should see an answer that refers to the prohibition on autoscalers and the specific processes required to get one.
+
+Great!
+
+OpenShift Lightspeed assigns greater weight to BYOK content, allowing it to prioritize your internal procedures over the default OpenShift documentation. This ensures that organization-specific knowledge takes precedence when generating responses, providing more relevant and tailored answers for your environment.
+
+Try asking questions about adding GPU nodes and see if you can get a response based on the internal documentation.
+
+== What's Next?
+
+So far, you've learned how OpenShift Lightspeed uses the OpenShift documentation and your own organizational knowledge (BYOK) to provide accurate answers. But what if OpenShift Lightspeed could go beyond static documentation and actually query your live cluster to provide real-time, environment-specific answers?
+
+That's exactly what the Cluster Interaction feature enables. Continue to the next section to learn how OpenShift Lightspeed can directly interact with your OpenShift cluster to retrieve current information about your pods, deployments, and other resources.
